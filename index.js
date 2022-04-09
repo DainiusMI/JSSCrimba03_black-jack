@@ -1,5 +1,6 @@
 let firstCard, secondCard, thridCard, sum;
 let drawnCards = [];
+let message = '';
 let showCards = document.getElementById('show-cards');
 let showSum = document.getElementById('show-sum');
 let messageEl = document.getElementById('message-el');
@@ -7,9 +8,14 @@ let startButtonEl = document.getElementById('start');
 let drawCardbuttonEl = document.getElementById('draw-card');
 
 
-
-
-let message = '';
+let playerName = 'Player';
+let playerScore = 40;
+let player = {
+    name: playerName,
+    score: playerScore
+};
+let playerRowEl = document.getElementById('player-row');
+playerRowEl.textContent =  player.name + ": $" + player.score;
 
 function geAtRandomCard() {
     //let min = Math.ceil(1);
@@ -31,6 +37,7 @@ function gameLogic() {
     let isAlive = true;
     if (sum <= 20) {
         message = 'Draw another card?';
+
         drawCardbuttonEl.classList.remove('hide-button');
         startButtonEl.classList.add('hide-button');
 
@@ -64,9 +71,6 @@ function startGame() {
     gameLogic();
 }
 
-
-
-
 function newCard() {
     thridCard =  geAtRandomCard();
     drawnCards.push(thridCard);
@@ -78,8 +82,6 @@ function newCard() {
 
     sum += thridCard;
     showSum.textContent = sum;
-
     gameLogic();
-
 }
 
